@@ -8,7 +8,7 @@ namespace RestaurantSystem.Data.Model
 {
     public class Table
     {
-        public Table(int id, string tableform, bool reserved)
+        public Table(int id, string tableform, string reserved)
         {
             this.Id = id;
             this.TableForm = tableform;
@@ -19,7 +19,7 @@ namespace RestaurantSystem.Data.Model
 
         public int Id { get; set; }
         public string TableForm { get; set; }
-        public bool Reserved { get; set; }
+        public string Reserved { get; set; }
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
         public ICollection<Order> Orders { get; set; }
