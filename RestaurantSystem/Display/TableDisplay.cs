@@ -12,11 +12,18 @@ namespace RestaurantSystem.Display
     {
         private static TableBusiness tableBusiness = new TableBusiness();
 
+        /// <summary>
+        /// Calling the main display method for tables
+        /// </summary>
         public TableDisplay() 
         {
             tableBusiness = new TableBusiness();
             TableDisplayMenu();
         }
+
+        /// <summary>
+        ///  Main display menu for tables, calling each method
+        /// </summary>
         static void TableDisplayMenu()
         {
             while (true)
@@ -55,6 +62,9 @@ namespace RestaurantSystem.Display
             }
         }
 
+        /// <summary>
+        /// Table display data menu
+        /// </summary>
         static void TableDisplayData()
         {
             Console.WriteLine(new string('=', 30));
@@ -69,6 +79,9 @@ namespace RestaurantSystem.Display
             Console.WriteLine(new string('=', 30));
         }
 
+        /// <summary>
+        /// Lists all tables added
+        /// </summary>
         static void ListTables()
         {
             Console.WriteLine(new string('=', 40));
@@ -84,6 +97,9 @@ namespace RestaurantSystem.Display
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Adds table
+        /// </summary>
         static void AddTable()
         {
             Table table = new Table();
@@ -98,6 +114,9 @@ namespace RestaurantSystem.Display
             Thread.Sleep(3000);
         }
 
+        /// <summary>
+        /// Removes table by id
+        /// </summary>
         static void RemoveTable()
         {
             Table table = new Table();
@@ -108,6 +127,9 @@ namespace RestaurantSystem.Display
             Thread.Sleep(3000);
         }
 
+        /// <summary>
+        /// Gets information for a table by id
+        /// </summary>
         static void GetTable()
         {
             Console.WriteLine(new string('=', 41));
@@ -128,6 +150,9 @@ namespace RestaurantSystem.Display
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Updates information about table by id
+        /// </summary>
         static void UpdateTable()
         {
             Console.WriteLine("Enter table ID to update: ");

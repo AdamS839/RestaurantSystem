@@ -14,13 +14,17 @@ namespace RestaurantSystem.Display
     {
         private static EmployeeBusiness employeeBusiness = new EmployeeBusiness();
 
+        /// <summary>
+        /// Calling the main display method for employees
+        /// </summary>
         public EmployeeDisplay()
         {
             employeeBusiness = new EmployeeBusiness();
             EmployeesDisplayMenu();
         }
+
         /// <summary>
-        /// Shows the display menu for employees
+        ///  Main display menu for employees, calling each method
         /// </summary>
         static void EmployeesDisplayMenu()
         {
@@ -88,7 +92,7 @@ namespace RestaurantSystem.Display
             var employees = employeeBusiness.GetAll();
             foreach (var item in employees)
             {
-                Console.WriteLine("{0}. {1} {2} {3} {4} {5} {6} {7} {8}", item.Id, item.FirstName, item.LastName, item.Age, item.Mail, item.Phone, item.Job.Name, item.ManagerId, item.HireDate.ToString("dd-MM-yyyy"));
+                Console.WriteLine("{0}. {1} {2} {3} {4} {5} {6} {7} {8}", item.Id, item.FirstName, item.LastName, item.Age, item.Mail, item.Phone, item.JobId, item.ManagerId, item.HireDate.ToString("dd-MM-yyyy"));
             }
             Console.WriteLine(new string('=', 40));
             Console.ReadKey();
@@ -96,6 +100,7 @@ namespace RestaurantSystem.Display
 
         /// <summary>
         /// Adds employee in the database
+        /// DateTime.ParseExact Method
         /// </summary>
         static void AddEmployee()
         {

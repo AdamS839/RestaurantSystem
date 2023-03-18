@@ -12,6 +12,9 @@ namespace RestaurantSystem.Display
     {
         private static JobBusiness jobBusiness = new JobBusiness();
 
+        /// <summary>
+        /// Calling the main display method for jobs
+        /// </summary>
         public JobDisplay()
         {
             jobBusiness = new JobBusiness();
@@ -19,7 +22,7 @@ namespace RestaurantSystem.Display
         }
 
         /// <summary>
-        /// Shows job display menu
+        ///  Main display menu for jobs, calling each method
         /// </summary>
         static void JobsDisplayMenu()
         {

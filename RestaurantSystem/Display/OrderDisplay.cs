@@ -12,6 +12,9 @@ namespace RestaurantSystem.Display
     {
         private static OrderBusiness orderBusiness = new OrderBusiness();
 
+        /// <summary>
+        /// Calling the main display method for orders
+        /// </summary>
         public OrderDisplay() 
         {
             orderBusiness = new OrderBusiness();
@@ -19,7 +22,7 @@ namespace RestaurantSystem.Display
         }
 
         /// <summary>
-        /// Shows order display menu
+        ///  Main display menu for orders, calling each method
         /// </summary>
         static void OrderDisplayMenu()
         {
@@ -148,7 +151,7 @@ namespace RestaurantSystem.Display
         }
 
         /// <summary>
-        /// Updates information about order by id
+        /// Updates information for order by id
         /// </summary>
         static void UpdateOrder()
         {

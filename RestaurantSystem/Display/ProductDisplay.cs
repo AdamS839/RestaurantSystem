@@ -12,11 +12,18 @@ namespace RestaurantSystem.Display
     {
         private static ProductBusiness productBusiness = new ProductBusiness();
 
+        /// <summary>
+        /// Calling the main display method for products
+        /// </summary>
         public ProductDisplay() 
         {
             productBusiness = new ProductBusiness();
             ProductDisplayMenu();
         }
+        
+        /// <summary>
+        /// Main display menu for products, calling each method
+        /// </summary>
         public void ProductDisplayMenu()
         {
             while (true)
@@ -55,6 +62,9 @@ namespace RestaurantSystem.Display
             }
         }
 
+        /// <summary>
+        /// Product display data menu
+        /// </summary>
         static void ProductDisplayData()
         {
             Console.WriteLine(new string('=', 30));
@@ -69,6 +79,9 @@ namespace RestaurantSystem.Display
             Console.WriteLine(new string('=', 30));
         }
 
+        /// <summary>
+        /// Lists all products added
+        /// </summary>
         static void ListProducts()
         {
             Console.WriteLine(new string('=', 40));
@@ -84,6 +97,9 @@ namespace RestaurantSystem.Display
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Adds product
+        /// </summary>
         static void AddProduct()
         {
             Product product = new Product();
@@ -96,6 +112,9 @@ namespace RestaurantSystem.Display
             Thread.Sleep(3000);
         }
 
+        /// <summary>
+        /// Removes product by id
+        /// </summary>
         static void RemoveProduct()
         {
             Product product = new Product();
@@ -106,6 +125,9 @@ namespace RestaurantSystem.Display
             Thread.Sleep(3000);
         }
 
+        /// <summary>
+        /// Gets the information about product by id
+        /// </summary>
         static void GetProduct()
         {
             Console.WriteLine(new string('=', 41));
@@ -125,6 +147,9 @@ namespace RestaurantSystem.Display
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Updates information about product by id
+        /// </summary>
         static void UpdateProduct()
         {
             Console.WriteLine("Enter product ID to update: ");
