@@ -11,6 +11,10 @@ namespace RestaurantSystem.Business
     {
         private RestaurantContext jobContext;
 
+        /// <summary>
+        /// Gets a List of all jobs
+        /// </summary>
+        /// <returns></returns>
         public List<Job> GetAll()
         {
             using (jobContext = new RestaurantContext())
@@ -19,6 +23,11 @@ namespace RestaurantSystem.Business
             }
         }
 
+        /// <summary>
+        /// Gets a job type by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Job Get(int id)
         {
             using (jobContext = new RestaurantContext())
@@ -26,7 +35,11 @@ namespace RestaurantSystem.Business
                 return jobContext.Jobs.Find(id);
             }
         }
-
+        /// <summary>
+        /// Adds a job type by 
+        /// 
+        /// </summary>
+        /// <param name="job"></param>
         public void Add(Job job)
         {
             using (jobContext = new RestaurantContext())
