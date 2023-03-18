@@ -36,6 +36,19 @@ namespace RestaurantSystem.Business
             }
         }
 
+        public void Delete(int id)
+        {
+            using (productContext = new RestaurantContext())
+            {
+                var product = productContext.Products.Find(id);
+                if (product != null)
+                {
+                    productContext.Products.Remove(product);
+                    productContext.SaveChanges();
+                }
+            }
+        }
+
         public void Update(Product product)
         {
             using (productContext = new RestaurantContext())
