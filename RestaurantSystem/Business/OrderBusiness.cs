@@ -13,7 +13,7 @@ namespace RestaurantSystem.Business
 
         public List<Order> GetAll()
         {
-            using (orderContext = new Order())
+            using (orderContext = new RestaurantContext())
             {
                 return orderContext.Orders.ToList();
             }
@@ -21,7 +21,7 @@ namespace RestaurantSystem.Business
 
         public Order Get(int id)
         {
-            using (orderContext = new Order())
+            using (orderContext = new RestaurantContext())
             {
                 return orderContext.Orders.Find(id);
             }
@@ -43,7 +43,7 @@ namespace RestaurantSystem.Business
                 var order = orderContext.Orders.Find(id);
                 if (order != null)
                 {
-                    orderContext.Orders.Remove(id);
+                    orderContext.Orders.Remove(order);
                     orderContext.SaveChanges();
                 }
             }
@@ -53,14 +53,14 @@ namespace RestaurantSystem.Business
         {
             using (orderContext = new RestaurantContext())
             {
-                var item = orderContext.Orders.Find(order.id);
+                var item = orderContext.Orders.Find(order.Id);
                 if (item != null)
                 {
-                    orderContext.Entry(item).CurrentValue.SetValues(order);
+                    orderContext.Entry(item).CurrentValues.SetValues(order);
                     orderContext.SaveChanges();
                 }
             }
         }
-        
+
     }
 }

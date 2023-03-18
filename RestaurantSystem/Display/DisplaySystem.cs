@@ -24,23 +24,23 @@ namespace RestaurantSystem.Display
                 {
                     case 1:
                         Console.Clear();
-                        EmployeesDisplayMenu();
+                        EmployeeDisplay employeeDisplay = new EmployeeDisplay();
                         break;
                     case 2:
                         Console.Clear();
-                        JobsDisplayMenu();
+                        JobDisplay jobDisplay = new JobDisplay();
                         break;
                     case 3:
                         Console.Clear();
-                        TableDisplayMenu();
+                        TableDisplay tableDisplay = new TableDisplay();
                         break;
                     case 4:
                         Console.Clear();
-                        OrderDisplayMenu();
+                        OrderDisplay orderDisplay = new OrderDisplay();
                         break;
                     case 5:
                         Console.Clear();
-                        ProductDisplayMenu();
+                        ProductDisplay productDisplay = new ProductDisplay();
                         break;
                     case 9:
                         Environment.Exit(0);

@@ -12,6 +12,12 @@ namespace RestaurantSystem.Display
     {
         private static OrderBusiness orderBusiness = new OrderBusiness();
 
+        public OrderDisplay() 
+        {
+            orderBusiness = new OrderBusiness();
+            OrderDisplayMenu();
+        }
+
         /// <summary>
         /// Shows order display menu
         /// </summary>

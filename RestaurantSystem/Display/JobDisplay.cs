@@ -12,6 +12,12 @@ namespace RestaurantSystem.Display
     {
         private static JobBusiness jobBusiness = new JobBusiness();
 
+        public JobDisplay()
+        {
+            jobBusiness = new JobBusiness();
+            JobsDisplayMenu();
+        }
+
         /// <summary>
         /// Shows job display menu
         /// </summary>

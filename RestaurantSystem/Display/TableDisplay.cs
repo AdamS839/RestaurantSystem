@@ -1,4 +1,5 @@
 ﻿using RestaurantSystem.Business;
+using RestaurantSystem.Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,11 @@ namespace RestaurantSystem.Display
     {
         private static TableBusiness tableBusiness = new TableBusiness();
 
+        public TableDisplay() 
+        {
+            tableBusiness = new TableBusiness();
+            TableDisplayMenu();
+        }
         static void TableDisplayMenu()
         {
             while (true)

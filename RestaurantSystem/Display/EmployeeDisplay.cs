@@ -1,6 +1,7 @@
 ﻿using RestaurantSystem.Business;
 using RestaurantSystem.Data.Model;
 using System;
+using RestaurantSystem.Display;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -13,6 +14,11 @@ namespace RestaurantSystem.Display
     {
         private static EmployeeBusiness employeeBusiness = new EmployeeBusiness();
 
+        public EmployeeDisplay()
+        {
+            employeeBusiness = new EmployeeBusiness();
+            EmployeesDisplayMenu();
+        }
         /// <summary>
         /// Shows the display menu for employees
         /// </summary>

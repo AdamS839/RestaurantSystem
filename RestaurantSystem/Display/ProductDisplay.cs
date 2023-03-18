@@ -11,6 +11,12 @@ namespace RestaurantSystem.Display
     public class ProductDisplay
     {
         private static ProductBusiness productBusiness = new ProductBusiness();
+
+        public ProductDisplay() 
+        {
+            productBusiness = new ProductBusiness();
+            ProductDisplayMenu();
+        }
         public void ProductDisplayMenu()
         {
             while (true)
