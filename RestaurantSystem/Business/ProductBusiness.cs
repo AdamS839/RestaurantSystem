@@ -9,55 +9,42 @@ namespace RestaurantSystem.Business
 {
     class ProductBusiness
     {
-        private RestaurantContext productBusiness;
+        private RestaurantContext productContext;
 
         public List<Product> GetAll()
         {
-            using (productBusiness = new RestaurantContext())
+            using (productContext = new RestaurantContext())
             {
-                return productBusiness.Products.ToList();
+                return productContext.Products.ToList();
             }
         }
 
         public Product Get(int id)
         {
-            using (productBusiness = new RestaurantContext())
+            using (productContext = new RestaurantContext())
             {
-                return productBusiness.Products.Find(id);
+                return productContext.Products.Find(id);
             }
         }
 
         public void Add(Product product)
         {
-            using (productBusiness = new RestaurantContext())
+            using (productContext = new RestaurantContext())
             {
-                productBusiness.Products.Add(product);
-                productBusiness.SaveChanges();
-            }
-        }
-
-        public void Delete(int id)
-        {
-            using (productBusiness = new RestaurantContext())
-            {
-                var product = productBusiness.Products.Find(id);
-                if (product != null)
-                {
-                    productBusiness.Products.Remove(product);
-                    productBusiness.SaveChanges();
-                }
+                productContext.Products.Add(product);
+                productContext.SaveChanges();
             }
         }
 
         public void Update(Product product)
         {
-            using (productBusiness = new RestaurantContext())
+            using (productContext = new RestaurantContext())
             {
-                var item = productBusiness.Products.Find(product.Id);
+                var item = productContext.Products.Find(product.Id);
                 if (item != null)
                 {
-                    productBusiness.Entry(item).CurrentValues.SetValues(product);
-                    productBusiness.SaveChanges();
+                    productContext.Entry(item).CurrentValues.SetValues(product);
+                    productContext.SaveChanges();
                 }
             }
         }
