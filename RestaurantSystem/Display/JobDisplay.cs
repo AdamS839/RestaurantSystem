@@ -98,7 +98,7 @@ namespace RestaurantSystem.Display
         }
 
         /// <summary>
-        /// Adds job in the database
+        /// Adds job
         /// </summary>
         static void AddJob()
         {
@@ -121,12 +121,11 @@ namespace RestaurantSystem.Display
             Console.WriteLine("Enter job ID you want to delete: ");
             int id = int.Parse(Console.ReadLine());
             jobBusiness.Delete(id);
-            Console.WriteLine("Job deleted successfully!");
             Thread.Sleep(3000);
         }
 
         /// <summary>
-        /// Get information for job by id
+        /// Finds the job id and if the job exists, the information about the job is displayed
         /// </summary>
         static void GetJob()
         {
@@ -144,11 +143,15 @@ namespace RestaurantSystem.Display
                 Console.WriteLine("Salary: " + job.Salary);
                 Console.WriteLine(new string('=', 20));
             }
+            else
+            {
+                Console.WriteLine("Job not found!");
+            }
             Console.ReadKey();
         }
 
         /// <summary>
-        /// Updates information for jobs
+        /// Updates the information about a job
         /// </summary>
         static void UpdateJob()
         {
@@ -170,5 +173,6 @@ namespace RestaurantSystem.Display
             }
             Thread.Sleep(4000);
         }
+
     }
 }

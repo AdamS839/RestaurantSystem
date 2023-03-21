@@ -11,6 +11,10 @@ namespace RestaurantSystem.Business
     {
         private RestaurantContext tableContext;
 
+        /// <summary>
+        /// Returns a list of all tables
+        /// </summary>
+        /// <returns></returns>
         public List<Table> GetAll()
         {
             using (tableContext = new RestaurantContext())
@@ -19,6 +23,11 @@ namespace RestaurantSystem.Business
             }
         }
 
+        /// <summary>
+        /// Finds the table with the specified id and returns it
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Table Get(int id)
         {
             using (tableContext = new RestaurantContext())
@@ -27,6 +36,10 @@ namespace RestaurantSystem.Business
             }
         }
 
+        /// <summary>
+        /// Adds a table
+        /// </summary>
+        /// <param name="table"></param>
         public void Add(Table table)
         {
             using (tableContext = new RestaurantContext())
@@ -36,6 +49,10 @@ namespace RestaurantSystem.Business
             }
         }
 
+        /// <summary>
+        /// Deletes the table with specified id if the job exists, if not - no action is taken
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(int id)
         {
             using (tableContext = new RestaurantContext())
@@ -45,10 +62,19 @@ namespace RestaurantSystem.Business
                 {
                     tableContext.Tables.Remove(table);
                     tableContext.SaveChanges();
+                    Console.WriteLine("Table deleted successfully!");
+                }
+                else
+                {
+                    Console.WriteLine("Table not found!");
                 }
             }
         }
 
+        /// <summary>
+        /// Retrieves existing table by searching the id, updates the properties and finally save the changes to the database
+        /// </summary>
+        /// <param name="table"></param>
         public void Update(Table table)
         {
             using (tableContext = new RestaurantContext())

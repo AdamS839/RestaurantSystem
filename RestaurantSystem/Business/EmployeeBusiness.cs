@@ -10,8 +10,11 @@ namespace RestaurantSystem.Business
     public class EmployeeBusiness
     {
         private RestaurantContext employeeContext;
-        
-        
+
+        /// <summary>
+        /// Returns a list of all employees
+        /// </summary>
+        /// <returns></returns>
         public List<Employee> GetAll()
         {
             using(employeeContext = new RestaurantContext())
@@ -20,6 +23,11 @@ namespace RestaurantSystem.Business
             }
         }
 
+        /// <summary>
+        /// Finds the employee with the specified id and returns it
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Employee Get(int id)
         {
             using (employeeContext = new RestaurantContext())
@@ -28,6 +36,10 @@ namespace RestaurantSystem.Business
             }
         }
 
+        /// <summary>
+        /// Adds an employee
+        /// </summary>
+        /// <param name="employee"></param>
         public void Add(Employee employee)
         {
             using (employeeContext = new RestaurantContext())
@@ -37,6 +49,10 @@ namespace RestaurantSystem.Business
             }
         }
 
+        /// <summary>
+        /// Deletes the employee with specified id if the employee exists, if not - no action is taken
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(int id)
         {
             using (employeeContext = new RestaurantContext())
@@ -46,10 +62,19 @@ namespace RestaurantSystem.Business
                 {
                     employeeContext.Employees.Remove(employee);
                     employeeContext.SaveChanges();
+                    Console.WriteLine("Employee deleted successfully!");
+                }
+                else
+                {
+                    Console.WriteLine("Employee not found!");
                 }
             }
         }
 
+        /// <summary>
+        /// Retrieves existing employee by searching the id, updates the properties and finally save the changes to the database
+        /// </summary>
+        /// <param name="employee"></param>
         public void Update(Employee employee)
         {
             using (employeeContext = new RestaurantContext())
@@ -62,5 +87,6 @@ namespace RestaurantSystem.Business
                 }
             }
         }
+
     }
 }

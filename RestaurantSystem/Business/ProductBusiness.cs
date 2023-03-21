@@ -11,6 +11,10 @@ namespace RestaurantSystem.Business
     {
         private RestaurantContext productContext;
 
+        /// <summary>
+        /// Returns a list of all products
+        /// </summary>
+        /// <returns></returns>
         public List<Product> GetAll()
         {
             using (productContext = new RestaurantContext())
@@ -19,6 +23,11 @@ namespace RestaurantSystem.Business
             }
         }
 
+        /// <summary>
+        /// Finds the product with the specified id and returns it
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Product Get(int id)
         {
             using (productContext = new RestaurantContext())
@@ -27,6 +36,10 @@ namespace RestaurantSystem.Business
             }
         }
 
+        /// <summary>
+        /// Adds a product
+        /// </summary>
+        /// <param name="product"></param>
         public void Add(Product product)
         {
             using (productContext = new RestaurantContext())
@@ -36,6 +49,10 @@ namespace RestaurantSystem.Business
             }
         }
 
+        /// <summary>
+        /// Deletes the product with specified id if the job exists, if not - no action is taken
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(int id)
         {
             using (productContext = new RestaurantContext())
@@ -45,10 +62,19 @@ namespace RestaurantSystem.Business
                 {
                     productContext.Products.Remove(product);
                     productContext.SaveChanges();
+                    Console.WriteLine("Product deleted successfully!");
+                }
+                else
+                {
+                    Console.WriteLine("Product not found!");
                 }
             }
         }
 
+        /// <summary>
+        /// Retrieves existing product by searching the id, updates the properties and finally save the changes to the database
+        /// </summary>
+        /// <param name="product"></param>
         public void Update(Product product)
         {
             using (productContext = new RestaurantContext())
@@ -61,5 +87,6 @@ namespace RestaurantSystem.Business
                 }
             }
         }
+
     }
 }

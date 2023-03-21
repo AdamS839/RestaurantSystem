@@ -12,7 +12,7 @@ namespace RestaurantSystem.Business
         private RestaurantContext jobContext;
 
         /// <summary>
-        /// Gets a List of all jobs
+        /// Returns a list of all jobs
         /// </summary>
         /// <returns></returns>
         public List<Job> GetAll()
@@ -24,7 +24,7 @@ namespace RestaurantSystem.Business
         }
 
         /// <summary>
-        /// Gets a job type by id
+        /// Finds the job with the specified id and returns it
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -35,9 +35,9 @@ namespace RestaurantSystem.Business
                 return jobContext.Jobs.Find(id);
             }
         }
+
         /// <summary>
-        /// Adds a job type by 
-        /// 
+        /// Adds a job
         /// </summary>
         /// <param name="job"></param>
         public void Add(Job job)
@@ -49,6 +49,10 @@ namespace RestaurantSystem.Business
             }
         }
 
+        /// <summary>
+        /// Deletes the job with specified id if the job exists, if not - no action is taken
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(int id)
         {
             using (jobContext = new RestaurantContext())
@@ -58,10 +62,19 @@ namespace RestaurantSystem.Business
                 {
                     jobContext.Jobs.Remove(job);
                     jobContext.SaveChanges();
+                    Console.WriteLine("Job deleted successfully!");
+                }
+                else
+                {
+                    Console.WriteLine("Job not found!");
                 }
             }
         }
 
+        /// <summary>
+        /// Retrieves existing job by searching the id, updates the properties and finally save the changes to the database
+        /// </summary>
+        /// <param name="job"></param>
         public void Update(Job job)
         {
             using (jobContext = new RestaurantContext())
@@ -74,5 +87,6 @@ namespace RestaurantSystem.Business
                 }
             }
         }
+
     }
 }

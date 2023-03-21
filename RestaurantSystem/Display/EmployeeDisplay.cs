@@ -99,8 +99,7 @@ namespace RestaurantSystem.Display
         }
 
         /// <summary>
-        /// Adds employee in the database
-        /// DateTime.ParseExact Method
+        /// Adds new employee
         /// </summary>
         static void AddEmployee()
         {
@@ -127,7 +126,7 @@ namespace RestaurantSystem.Display
         }
 
         /// <summary>
-        /// Removes employee by id
+        /// Deletes the employee by id
         /// </summary>
         static void RemoveEmployee()
         {
@@ -135,12 +134,11 @@ namespace RestaurantSystem.Display
             Console.WriteLine("Enter employee ID you want to delete: ");
             int id = int.Parse(Console.ReadLine());
             employeeBusiness.Delete(id);
-            Console.WriteLine("Employee deleted successfully!");
             Thread.Sleep(3000);
         }
 
         /// <summary>
-        /// Gets employee information by id
+        /// Finds the employee id and if the employee exists, the information about the employee is displayed
         /// </summary>
         static void GetEmployee()
         {
@@ -164,11 +162,15 @@ namespace RestaurantSystem.Display
                 Console.WriteLine("Hire date: " + employee.HireDate);
                 Console.WriteLine(new string('=', 20));
             }
+            else
+            {
+                Console.WriteLine("Employee not found!");
+            }
             Console.ReadKey();
         }
 
         /// <summary>
-        /// Updates information for employee
+        /// Updates information for employee by finding the id
         /// </summary>
         static void UpdateEmployee()
         {

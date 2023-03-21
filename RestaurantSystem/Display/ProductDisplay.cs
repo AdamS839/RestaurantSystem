@@ -121,12 +121,11 @@ namespace RestaurantSystem.Display
             Console.WriteLine("Enter product ID you want to delete: ");
             int id = int.Parse(Console.ReadLine());
             productBusiness.Delete(id);
-            Console.WriteLine("Product deleted successfully!");
             Thread.Sleep(3000);
         }
 
         /// <summary>
-        /// Gets the information about product by id
+        /// Finds the product id and if the product exists, information about the product is displayed
         /// </summary>
         static void GetProduct()
         {
@@ -170,5 +169,6 @@ namespace RestaurantSystem.Display
             }
             Thread.Sleep(4000);
         }
+
     }
 }

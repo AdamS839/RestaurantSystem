@@ -123,12 +123,11 @@ namespace RestaurantSystem.Display
             Console.WriteLine("Enter table ID you want to delete: ");
             int id = int.Parse(Console.ReadLine());
             tableBusiness.Delete(id);
-            Console.WriteLine("Table deleted successfully!");
             Thread.Sleep(3000);
         }
 
         /// <summary>
-        /// Gets information for a table by id
+        /// Finds the table id and if the table exists, the information about the table is displayed
         /// </summary>
         static void GetTable()
         {
@@ -175,5 +174,6 @@ namespace RestaurantSystem.Display
             }
             Thread.Sleep(4000);
         }
+
     }
 }

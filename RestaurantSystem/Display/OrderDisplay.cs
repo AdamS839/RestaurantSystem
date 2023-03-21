@@ -123,12 +123,11 @@ namespace RestaurantSystem.Display
             Console.WriteLine("Enter order ID you want to delete: ");
             int id = int.Parse(Console.ReadLine());
             orderBusiness.Delete(id);
-            Console.WriteLine("Order deleted successfully!");
             Thread.Sleep(3000);
         }
 
         /// <summary>
-        /// Gets information for order by id
+        /// Finds the order id and if the order exists, the information about the order is displayed
         /// </summary>
         static void GetOrder()
         {
@@ -174,5 +173,6 @@ namespace RestaurantSystem.Display
             }
             Thread.Sleep(4000);
         }
+
     }
 }

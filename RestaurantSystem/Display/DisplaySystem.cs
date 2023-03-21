@@ -13,6 +13,9 @@ namespace RestaurantSystem.Display
             Input();
         }
 
+        /// <summary>
+        /// Main method that calls each display
+        /// </summary>
         private void Input()
         {
             while (true)
@@ -49,6 +52,9 @@ namespace RestaurantSystem.Display
             }
         }
 
+        /// <summary>
+        /// Main menu for the display
+        /// </summary>
         static void DefaultDisplayMenu()
         {
             Console.WriteLine(new string('=', 50));
