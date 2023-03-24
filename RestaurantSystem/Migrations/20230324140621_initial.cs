@@ -56,7 +56,7 @@ namespace RestaurantSystem.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TableForm = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Reserved = table.Column<bool>(type: "bit", nullable: false),
+                    Reserved = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

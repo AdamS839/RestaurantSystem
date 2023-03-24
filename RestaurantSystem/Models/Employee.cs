@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,8 @@ namespace RestaurantSystem.Data.Model
 {
     public class Employee
     {
-        public Employee(int id, string firstname, string lastname, int age, string mail, string phone,int jobid, int managerid, DateTime hiredate) : base()
+        public Employee(string firstname, string lastname, int age, string mail, string phone,int jobid, int managerid, DateTime hiredate) : base()
         {
-            this.Id = id;
             this.FirstName = firstname;
             this.LastName = lastname;
             this.Age = age;
@@ -22,7 +22,6 @@ namespace RestaurantSystem.Data.Model
         }
 
         public Employee() { }
-
 
         public int Id { get; set; }
         public string FirstName { get; set; }

@@ -8,6 +8,15 @@ namespace RestaurantSystem.Data.Model
 {
     public class Order
     {
+        public Order(int id, int productId, int quantity, int tableId)
+        {
+            this.ProductId = productId;
+            this.Quantity = quantity;
+            this.TableId = tableId;
+        }
+
+        public Order() { }
+
         public int Id { get; set; }
         public int ProductId { get; set; }
         public int Quantity { get; set; }
@@ -15,17 +24,5 @@ namespace RestaurantSystem.Data.Model
         public ICollection<Product> Products { get; set; }
         public Table Table { get; set; }
 
-        public Order(int id, int productId, int quantity, int tableId)
-        {
-            this.Id = id;
-            this.ProductId = productId;
-            this.Quantity = quantity;
-            this.TableId = tableId;
-        }
-
-        public Order()
-        {
-
-        }
     }
 }

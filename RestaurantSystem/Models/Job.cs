@@ -11,7 +11,6 @@ namespace RestaurantSystem.Data.Model
     {
         public Job(int id, string name, decimal salary)
         {
-            this.Id = id;
             this.Name = name;
             this.Salary = salary;
         }

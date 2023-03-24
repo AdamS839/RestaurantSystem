@@ -145,8 +145,9 @@ namespace RestaurantSystem.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Reserved")
-                        .HasColumnType("bit");
+                    b.Property<string>("Reserved")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TableForm")
                         .IsRequired()

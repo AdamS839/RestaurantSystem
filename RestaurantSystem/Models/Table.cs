@@ -10,7 +10,6 @@ namespace RestaurantSystem.Data.Model
     {
         public Table(int id, string tableform, string reserved)
         {
-            this.Id = id;
             this.TableForm = tableform;
             this.Reserved = reserved;
         }

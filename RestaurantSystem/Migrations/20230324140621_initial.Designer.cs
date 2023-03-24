@@ -12,7 +12,7 @@ using RestaurantSystem.Data;
 namespace RestaurantSystem.Migrations
 {
     [DbContext(typeof(RestaurantContext))]
-    [Migration("20230315164314_initial")]
+    [Migration("20230324140621_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -147,8 +147,9 @@ namespace RestaurantSystem.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Reserved")
-                        .HasColumnType("bit");
+                    b.Property<string>("Reserved")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TableForm")
                         .IsRequired()
