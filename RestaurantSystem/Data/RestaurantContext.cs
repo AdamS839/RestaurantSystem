@@ -11,11 +11,11 @@ namespace RestaurantSystem.Data
 {
     public class RestaurantContext : DbContext
     {
-        public virtual DbSet<Employee> Employees { get; set; } = null!;
-        public virtual DbSet<Job> Jobs { get; set; } = null!;
-        public virtual DbSet<Order> Orders { get; set; } = null!;
-        public virtual DbSet<Product> Products { get; set; } = null!;
-        public virtual DbSet<Table> Tables { get; set; } = null!;
+        public DbSet<Employee> Employees { get; set; } = null!;
+        public DbSet<Job> Jobs { get; set; } = null!;
+        public DbSet<Order> Orders { get; set; } = null!;
+        public DbSet<Product> Products { get; set; } = null!;
+        public DbSet<Table> Tables { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

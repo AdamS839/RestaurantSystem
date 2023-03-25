@@ -79,7 +79,7 @@ namespace RestaurantSystem.Business
         {
             using (productContext = new RestaurantContext())
             {
-                var item = productContext.Products.Find(product.Id);
+                var item = productContext.Products.Find(product.ProductId);
                 if (item != null)
                 {
                     productContext.Entry(item).CurrentValues.SetValues(product);

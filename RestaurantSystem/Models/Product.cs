@@ -10,20 +10,19 @@ namespace RestaurantSystem.Data.Model
 {
     public class Product
     {
-        public Product(int id, int orderId, string name, decimal price)
+        public Product(int id, string name, decimal price)
         {
-            OrderId = orderId;
-            Name = name;
-            Price = price;
+            this.Name = name;
+            this.Price = price;
         }
 
         public Product() { }
         
-        public int Id { get; set; }
-        public int OrderId { get; set; }
+        public int ProductId { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public Order Order { get; set; }
+
+        public ICollection<Order> Orders { get; set; }
 
     }
 }

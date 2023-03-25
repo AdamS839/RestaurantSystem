@@ -51,7 +51,6 @@ namespace RestaurantSystem.Display
                         GetJob();
                         break;
                     case 5:
-                        Console.Clear();
                         UpdateJob();
                         break;
                     default:
@@ -88,10 +87,9 @@ namespace RestaurantSystem.Display
             Console.WriteLine(new string('=', 15) + " Job List " + new string('=', 15));
             Console.WriteLine(new string('=', 40));
             var jobs = jobBusiness.GetAll();
-            Console.WriteLine("ID Name Salary");
             foreach (var item in jobs)
             {
-                Console.WriteLine("{0}. {1} {2}", item.Id, item.Name, item.Salary);
+                Console.WriteLine("{0}. {1} - Salary: {2}", item.Id, item.Name, item.Salary);
             }
             Console.WriteLine(new string('=', 40));
             Console.ReadKey();

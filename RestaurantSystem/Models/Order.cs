@@ -8,21 +8,21 @@ namespace RestaurantSystem.Data.Model
 {
     public class Order
     {
-        public Order(int id, int productId, int quantity, int tableId)
+        public Order(int quantity, int tableId, int productid) : base()
         {
-            this.ProductId = productId;
+            this.ProductId = productid;
             this.Quantity = quantity;
             this.TableId = tableId;
         }
 
         public Order() { }
 
-        public int Id { get; set; }
+        public int OrderId { get; set; }
         public int ProductId { get; set; }
         public int Quantity { get; set; }
         public int TableId { get; set; }
-        public ICollection<Product> Products { get; set; }
         public Table Table { get; set; }
+        public Product Product { get; set; }
 
     }
 }

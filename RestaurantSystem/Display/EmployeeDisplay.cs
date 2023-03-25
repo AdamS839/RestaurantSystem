@@ -53,7 +53,6 @@ namespace RestaurantSystem.Display
                         GetEmployee();
                         break;
                     case 5:
-                        Console.Clear();
                         UpdateEmployee();
                         break;
                     default:
@@ -92,7 +91,16 @@ namespace RestaurantSystem.Display
             var employees = employeeBusiness.GetAll();
             foreach (var item in employees)
             {
-                Console.WriteLine("{0}. {1} {2} {3} {4} {5} {6} {7} {8}", item.Id, item.FirstName, item.LastName, item.Age, item.Mail, item.Phone, item.JobId, item.ManagerId, item.HireDate.ToString("dd-MM-yyyy"));
+                Console.WriteLine("ID: " + item.Id);
+                Console.WriteLine("First name: " + item.FirstName);
+                Console.WriteLine("Last name: " + item.LastName);
+                Console.WriteLine("Age: " + item.Age);
+                Console.WriteLine("Mail: " + item.Mail);
+                Console.WriteLine("Phone number: " + item.Phone);
+                Console.WriteLine("Job ID: " + item.JobId);
+                Console.WriteLine("Manager ID: " + item.ManagerId);
+                Console.WriteLine("Hire date: " + item.HireDate.ToString("dd-MM-yyyy"));
+                Console.WriteLine();
             }
             Console.WriteLine(new string('=', 40));
             Console.ReadKey();

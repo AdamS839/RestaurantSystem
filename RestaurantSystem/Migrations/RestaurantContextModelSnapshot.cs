@@ -87,11 +87,11 @@ namespace RestaurantSystem.Migrations
 
             modelBuilder.Entity("RestaurantSystem.Data.Model.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -102,7 +102,9 @@ namespace RestaurantSystem.Migrations
                     b.Property<int>("TableId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("OrderId");
+
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("TableId");
 
@@ -111,25 +113,20 @@ namespace RestaurantSystem.Migrations
 
             modelBuilder.Entity("RestaurantSystem.Data.Model.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
+                    b.HasKey("ProductId");
 
                     b.ToTable("Products");
                 });
@@ -173,24 +170,21 @@ namespace RestaurantSystem.Migrations
 
             modelBuilder.Entity("RestaurantSystem.Data.Model.Order", b =>
                 {
+                    b.HasOne("RestaurantSystem.Data.Model.Product", "Product")
+                        .WithMany("Orders")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("RestaurantSystem.Data.Model.Table", "Table")
                         .WithMany("Orders")
                         .HasForeignKey("TableId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Product");
+
                     b.Navigation("Table");
-                });
-
-            modelBuilder.Entity("RestaurantSystem.Data.Model.Product", b =>
-                {
-                    b.HasOne("RestaurantSystem.Data.Model.Order", "Order")
-                        .WithMany("Products")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("RestaurantSystem.Data.Model.Table", b =>
@@ -214,9 +208,9 @@ namespace RestaurantSystem.Migrations
                     b.Navigation("Employees");
                 });
 
-            modelBuilder.Entity("RestaurantSystem.Data.Model.Order", b =>
+            modelBuilder.Entity("RestaurantSystem.Data.Model.Product", b =>
                 {
-                    b.Navigation("Products");
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("RestaurantSystem.Data.Model.Table", b =>

@@ -79,7 +79,7 @@ namespace RestaurantSystem.Business
         {
             using (orderContext = new RestaurantContext())
             {
-                var item = orderContext.Orders.Find(order.Id);
+                var item = orderContext.Orders.Find(order.OrderId);
                 if (item != null)
                 {
                     orderContext.Entry(item).CurrentValues.SetValues(order);

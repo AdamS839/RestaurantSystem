@@ -9,7 +9,7 @@ namespace RestaurantSystem.Data.Model
 {
     public class Employee
     {
-        public Employee(string firstname, string lastname, int age, string mail, string phone,int jobid, int managerid, DateTime hiredate) : base()
+        public Employee(string firstname, string lastname, int age, string mail, string phone, int jobid, int managerid, DateTime hiredate) : base()
         {
             this.FirstName = firstname;
             this.LastName = lastname;

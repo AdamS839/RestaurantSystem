@@ -2,6 +2,7 @@
 using RestaurantSystem.Data.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,6 @@ namespace RestaurantSystem.Display
                         GetTable();
                         break;
                     case 5:
-                        Console.Clear();
                         UpdateTable();
                         break;
                     default:
@@ -85,13 +85,16 @@ namespace RestaurantSystem.Display
         static void ListTables()
         {
             Console.WriteLine(new string('=', 40));
-            Console.WriteLine(new string('=', 12) + " Table List " + new string('=', 12));
+            Console.WriteLine(new string('=', 14) + " Table List " + new string('=', 14));
             Console.WriteLine(new string('=', 40));
             var tables = tableBusiness.GetAll();
-            Console.WriteLine("ID Name Salary");
             foreach (var item in tables)
             {
-                Console.WriteLine("{0}. {1} {2} {3}", item.Id, item.TableForm, item.Reserved, item.EmployeeId);
+                Console.WriteLine("Id: " + item.Id);
+                Console.WriteLine("Table form: " + item.TableForm);
+                Console.WriteLine("Reserved: " + item.Reserved);
+                Console.WriteLine("Waiter Id: " + item.EmployeeId);
+                Console.WriteLine();
             }
             Console.WriteLine(new string('=', 40));
             Console.ReadKey();
@@ -107,7 +110,7 @@ namespace RestaurantSystem.Display
             table.TableForm = Console.ReadLine();
             Console.WriteLine("Enter reservation: ");
             table.Reserved = Console.ReadLine();
-            Console.WriteLine("Enter waiter ID: ");
+            Console.WriteLine("Enter waiter id: ");
             table.EmployeeId = int.Parse(Console.ReadLine());
             tableBusiness.Add(table);
             Console.WriteLine("Table added successfully!");
@@ -132,7 +135,7 @@ namespace RestaurantSystem.Display
         static void GetTable()
         {
             Console.WriteLine(new string('=', 41));
-            Console.WriteLine(new string('=', 12) + " Get table by id " + new string('=', 11));
+            Console.WriteLine(new string('=', 12) + " Get table by id " + new string('=', 12));
             Console.WriteLine(new string('=', 41));
             Console.WriteLine("Enter Id to find table: ");
             int id = int.Parse(Console.ReadLine());
@@ -145,6 +148,10 @@ namespace RestaurantSystem.Display
                 Console.WriteLine("Reserved: " + table.Reserved);
                 Console.WriteLine("Waiter ID: " + table.EmployeeId);
                 Console.WriteLine(new string('=', 20));
+            }
+            else
+            {
+                Console.WriteLine("Table not found!");
             }
             Console.ReadKey();
         }

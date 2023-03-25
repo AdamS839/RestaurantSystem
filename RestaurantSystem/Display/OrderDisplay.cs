@@ -2,6 +2,7 @@
 using RestaurantSystem.Data.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace RestaurantSystem.Display
     public class OrderDisplay
     {
         private static OrderBusiness orderBusiness = new OrderBusiness();
+        private static ProductBusiness productBusiness = new ProductBusiness();
 
         /// <summary>
         /// Calling the main display method for orders
@@ -55,7 +57,6 @@ namespace RestaurantSystem.Display
                         UpdateOrder();
                         break;
                     default:
-                        Console.Clear();
                         OrderDisplayData();
                         break;
                 }
@@ -85,13 +86,16 @@ namespace RestaurantSystem.Display
         static void ListOrders()
         {
             Console.WriteLine(new string('=', 40));
-            Console.WriteLine(new string('=', 12) + " Order List " + new string('=', 12));
+            Console.WriteLine(new string('=', 14) + " Order List " + new string('=', 14));
             Console.WriteLine(new string('=', 40));
             var orders = orderBusiness.GetAll();
-            Console.WriteLine("ID Name Salary");
             foreach (var item in orders)
             {
-                Console.WriteLine("{0}. {1} {2} {3}", item.Id, item.TableId, item.ProductId, item.Quantity);
+                Console.WriteLine("Id: " + item.OrderId);
+                Console.WriteLine("Table Id: " + item.TableId);
+                Console.WriteLine("Product Id: " + item.ProductId);
+                Console.WriteLine("Quantity: " + item.Quantity);
+                Console.WriteLine();
             }
             Console.WriteLine(new string('=', 40));
             Console.ReadKey();
@@ -105,7 +109,7 @@ namespace RestaurantSystem.Display
             Order order = new Order();
             Console.WriteLine("Ënter table id: ");
             order.TableId = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter product id: ");
+            Console.WriteLine("Enter product ID: ");
             order.ProductId = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter quantity: ");
             order.Quantity = int.Parse(Console.ReadLine());
@@ -140,7 +144,7 @@ namespace RestaurantSystem.Display
             if (order != null)
             {
                 Console.WriteLine(new string('=', 20));
-                Console.WriteLine("ID: " + order.Id);
+                Console.WriteLine("ID: " + order.OrderId);
                 Console.WriteLine("Table ID: " + order.TableId);
                 Console.WriteLine("Product ID: " + order.ProductId);
                 Console.WriteLine("Quantity: " + order.Quantity);
@@ -164,6 +168,7 @@ namespace RestaurantSystem.Display
                 Console.WriteLine("Enter product ID: ");
                 order.ProductId = int.Parse(Console.ReadLine());
                 Console.WriteLine("Enter quantity: ");
+                order.Quantity = int.Parse(Console.ReadLine());
                 orderBusiness.Update(order);
                 Console.WriteLine("Order updated successfully.");
             }

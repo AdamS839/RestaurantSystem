@@ -51,7 +51,6 @@ namespace RestaurantSystem.Display
                         GetProduct();
                         break;
                     case 5:
-                        Console.Clear();
                         UpdateProduct();
                         break;
                     default:
@@ -67,16 +66,16 @@ namespace RestaurantSystem.Display
         /// </summary>
         static void ProductDisplayData()
         {
-            Console.WriteLine(new string('=', 30));
+            Console.WriteLine(new string('=', 32));
             Console.WriteLine(new string('=', 9) + " Product Menu " + new string('=', 9));
-            Console.WriteLine(new string('=', 30));
+            Console.WriteLine(new string('=', 32));
             Console.WriteLine("1. List all products");
             Console.WriteLine("2. Add product");
             Console.WriteLine("3. Remove product");
             Console.WriteLine("4. Get product by id");
             Console.WriteLine("5. Update product");
             Console.WriteLine("0. Back");
-            Console.WriteLine(new string('=', 30));
+            Console.WriteLine(new string('=', 32));
         }
 
         /// <summary>
@@ -85,13 +84,12 @@ namespace RestaurantSystem.Display
         static void ListProducts()
         {
             Console.WriteLine(new string('=', 40));
-            Console.WriteLine(new string('=', 12) + " Product List " + new string('=', 12));
+            Console.WriteLine(new string('=', 13) + " Product List " + new string('=', 13));
             Console.WriteLine(new string('=', 40));
             var products = productBusiness.GetAll();
-            Console.WriteLine("ID Name Price");
             foreach (var item in products)
             {
-                Console.WriteLine("{0}. {1} {2} ", item.Id, item.Name, item.Price);
+                Console.WriteLine("{0}. {1} - Price: {2} ", item.ProductId, item.Name, item.Price);
             }
             Console.WriteLine(new string('=', 40));
             Console.ReadKey();
@@ -138,7 +136,7 @@ namespace RestaurantSystem.Display
             if (product != null)
             {
                 Console.WriteLine(new string('=', 20));
-                Console.WriteLine("ID: " + product.Id);
+                Console.WriteLine("ID: " + product.ProductId);
                 Console.WriteLine("Name: " + product.Name);
                 Console.WriteLine("Price: " + product.Price);
                 Console.WriteLine(new string('=', 20));
