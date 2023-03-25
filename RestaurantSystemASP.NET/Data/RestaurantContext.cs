@@ -38,10 +38,10 @@ namespace RestaurantSystemASPNET.Data
                 .WithMany(t => t.Orders)
                 .HasForeignKey(o => o.TableId);
 
-            modelBuilder.Entity<Product>()
-                .HasRequired(p => p.Order)
-                .WithMany(o => o.Products)
-                .HasForeignKey(p => p.OrderId);
+            modelBuilder.Entity<Order>()
+                .HasRequired(o => o.Product)
+                .WithMany(p => p.Orders)
+                .HasForeignKey(o => o.ProductId);
         }
 
     }

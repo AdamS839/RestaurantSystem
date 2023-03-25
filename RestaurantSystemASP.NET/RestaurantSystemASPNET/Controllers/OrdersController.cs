@@ -18,7 +18,7 @@ namespace RestaurantSystemASPNET.Controllers
         // GET: Orders
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Table);
+            var orders = db.Orders.Include(o => o.Product).Include(o => o.Table);
             return View(orders.ToList());
         }
 
@@ -40,6 +40,7 @@ namespace RestaurantSystemASPNET.Controllers
         // GET: Orders/Create
         public ActionResult Create()
         {
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name");
             ViewBag.TableId = new SelectList(db.Tables, "Id", "TableForm");
             return View();
         }
@@ -49,7 +50,7 @@ namespace RestaurantSystemASPNET.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ProductId,Quantity,TableId")] Order order)
+        public ActionResult Create([Bind(Include = "OrderId,ProductId,Quantity,TableId")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +59,7 @@ namespace RestaurantSystemASPNET.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name", order.ProductId);
             ViewBag.TableId = new SelectList(db.Tables, "Id", "TableForm", order.TableId);
             return View(order);
         }
@@ -74,6 +76,7 @@ namespace RestaurantSystemASPNET.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name", order.ProductId);
             ViewBag.TableId = new SelectList(db.Tables, "Id", "TableForm", order.TableId);
             return View(order);
         }
@@ -83,7 +86,7 @@ namespace RestaurantSystemASPNET.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ProductId,Quantity,TableId")] Order order)
+        public ActionResult Edit([Bind(Include = "OrderId,ProductId,Quantity,TableId")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +94,7 @@ namespace RestaurantSystemASPNET.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name", order.ProductId);
             ViewBag.TableId = new SelectList(db.Tables, "Id", "TableForm", order.TableId);
             return View(order);
         }

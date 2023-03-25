@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Orders</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,13 +12,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Table.TableForm)
+            <!--
+            @Html.DisplayNameFor(model => model.Product.Name)
+                
+            -->
+            Product
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProductId)
-        </th>
-        <th>
+            <!--
             @Html.DisplayNameFor(model => model.Quantity)
+                
+            -->
+            Quantity
+        </th>
+        <th>
+            <!--
+            @Html.DisplayNameFor(model => model.Table.Id)
+                
+            -->
+            Table Id
         </th>
         <th></th>
     </tr>
@@ -26,18 +38,18 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Table.TableForm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductId)
+            @Html.DisplayFor(modelItem => item.Product.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Quantity)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.Table.Id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
         </td>
     </tr>
 }

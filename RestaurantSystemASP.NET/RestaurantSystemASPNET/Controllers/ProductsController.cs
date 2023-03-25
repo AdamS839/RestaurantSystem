@@ -18,8 +18,7 @@ namespace RestaurantSystemASPNET.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Order);
-            return View(products.ToList());
+            return View(db.Products.ToList());
         }
 
         // GET: Products/Details/5
@@ -40,7 +39,6 @@ namespace RestaurantSystemASPNET.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.OrderId = new SelectList(db.Orders, "Id", "Id");
             return View();
         }
 
@@ -49,7 +47,7 @@ namespace RestaurantSystemASPNET.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,OrderId,Name,Price")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,Name,Price")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +56,6 @@ namespace RestaurantSystemASPNET.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OrderId = new SelectList(db.Orders, "Id", "Id", product.OrderId);
             return View(product);
         }
 
@@ -74,7 +71,6 @@ namespace RestaurantSystemASPNET.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.OrderId = new SelectList(db.Orders, "Id", "Id", product.OrderId);
             return View(product);
         }
 
@@ -83,7 +79,7 @@ namespace RestaurantSystemASPNET.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,OrderId,Name,Price")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,Name,Price")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +87,6 @@ namespace RestaurantSystemASPNET.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OrderId = new SelectList(db.Orders, "Id", "Id", product.OrderId);
             return View(product);
         }
 

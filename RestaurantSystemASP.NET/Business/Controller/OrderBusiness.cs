@@ -11,6 +11,7 @@ namespace RestaurantSystemASPNET.Business
     {
         private RestaurantContext orderContext;
 
+
         /// <summary>
         /// Returns a list of all orders
         /// </summary>
@@ -79,7 +80,7 @@ namespace RestaurantSystemASPNET.Business
         {
             using (orderContext = new RestaurantContext())
             {
-                var item = orderContext.Orders.Find(order.Id);
+                var item = orderContext.Orders.Find(order.OrderId);
                 if (item != null)
                 {
                     orderContext.Entry(item).CurrentValues.SetValues(order);
